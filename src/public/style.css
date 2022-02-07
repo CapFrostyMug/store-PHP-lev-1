@@ -1,0 +1,8 @@
+.main-background {
+    background-color: #ffffff !important;
+}
+
+.item-img {
+    display: flex;
+    justify-content: center !important;
+}
