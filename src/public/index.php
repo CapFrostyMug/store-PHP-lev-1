@@ -15,7 +15,7 @@ $componentsPath = "../templates/components";
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container py-3">
+<div class="container">
     <header>
         <?php include_once "$componentsPath/Header/index.php"; ?>
     </header>
