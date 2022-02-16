@@ -17,12 +17,12 @@ $imagesArr = getImagesData();
                         ?>" alt="" width="50%" height="50%">
                     </div>
                     <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi
+                            dignissimos excepturi explicabo harum optio quibusdam repellendus.</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="Pages/fullimage.php?name=<?= $item['name'] . $item['extension'] ?>&id=<?= $item['id'] ?>">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <a href="Pages/FullimagePage/index.php?name=<?= $item['name'] . $item['extension'] ?>&id=<?= $item['id'] ?>">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Подробнее</button>
                                 </a>
                                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                             </div>

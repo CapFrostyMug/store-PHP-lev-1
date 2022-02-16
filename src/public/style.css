@@ -6,3 +6,11 @@
     display: flex;
     justify-content: center !important;
 }
+
+.form {
+    margin-top: 35px;
+}
+
+.review-item {
+    margin-top: 15px !important;
+}

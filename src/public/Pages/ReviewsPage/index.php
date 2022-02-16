@@ -1,5 +1,5 @@
 <?php
-$componentsPath = "../templates/components";
+include_once "../../../engine/queries/getReviews.php";
 ?>
 
 <!doctype html>
@@ -9,16 +9,16 @@ $componentsPath = "../templates/components";
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Главная – Всё для сада и огорода</title>
+    <title>Отзывы – Всё для сада и огорода</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
 <div class="container">
     <header>
         <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+            <a href="../../index.php" class="d-flex align-items-center text-dark text-decoration-none">
                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94"
                      role="img">
                     <title>Bootstrap</title>
@@ -31,18 +31,41 @@ $componentsPath = "../templates/components";
 
             <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                 <a class="me-3 py-2 text-dark text-decoration-none" href="#">Цены</a>
-                <a class="me-3 py-2 text-dark text-decoration-none" href="Pages/ReviewsPage/index.php">Отзывы</a>
+                <a class="me-3 py-2 text-dark text-decoration-none" href="#">Отзывы</a>
                 <a class="py-2 text-dark text-decoration-none" href="#">Поддержка</a>
             </nav>
         </div>
     </header>
     <main>
-        <?php include_once "$componentsPath/Main/index.php"; ?>
+        <div class="row">
+            <?php
+            foreach ($reviewsArr as $item): ?>
+                <div class="col-sm-6 review-item">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $item['name'] ?></h5>
+                            <p class="card-text"><?= $item['review'] ?></p>
+                            <span><?= $item['date_create'] ?></span>
+                        </div>
+                    </div>
+                </div>
+            <?php
+            endforeach;
+            ?>
+        </div>
+        <div class="form">
+            <form action="../../../engine/forms/reviewsHandler.php" method="post">
+                <p><input type="text" name="user-name" placeholder="Ваше имя" required></p>
+                <textarea name="review-text" cols="50" rows="5" placeholder="Текст отзыва..." required></textarea>
+                <p><input type="submit" value="Оставить отзыв"></p>
+            </form>
+        </div>
     </main>
-    <footer class="text-muted py-5">
-        <?php include_once "$componentsPath/Footer/index.php"; ?>
+    <footer class="reviews-page">
+        <?php include_once "../../../templates/components/Footer/index.php"; ?>
     </footer>
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
